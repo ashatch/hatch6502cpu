@@ -59,7 +59,7 @@ class Hatch6502CpuTest {
         1, 0x20, 8, 5, // ' '
         9,             // dec y
         6, 0,          // equal flag set if y == 0?
-        7, -20,        // if equal flag set, rewind 20 instructions
+        7, -20,        // if equal flag not set, rewind 20 instructions
         0              // finish letting the dogs out
     };
 
