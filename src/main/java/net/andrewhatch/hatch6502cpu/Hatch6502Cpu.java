@@ -85,4 +85,10 @@ public class Hatch6502Cpu {
   public int peekMemory(int address) {
     return this.memory[address];
   }
+
+  public void copyMemoryBytes(byte[] destination, int address, int length) {
+    for(int i = 0; i < length; i++) {
+      destination[i] = (byte) this.memory[address + i];
+    }
+  }
 }

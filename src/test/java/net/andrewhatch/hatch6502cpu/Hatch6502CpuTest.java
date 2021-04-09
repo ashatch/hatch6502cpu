@@ -67,14 +67,11 @@ class Hatch6502CpuTest {
     cpu.loadProgram(program);
     cpu.runProgram();
 
-    final String output = IntStream.range(128, 255)
-        .boxed()
-        .map(cpu::peekMemory)
-        .map(i -> "" + (char)(int)(i))
-        .collect(Collectors.joining());
 
-    final String str = output.split("\0")[0]; // deal with null terminated string
+    byte[] buf = new byte[128];
+    cpu.copyMemoryBytes(buf, 128, 128);
+    final String output = new String(buf).split("\0")[0]; // deal with null (\0) terminated string
 
-    assertEquals("who let the dogs out who who who ", str);
+    assertEquals("who let the dogs out who who who ", output);
   }
 }
