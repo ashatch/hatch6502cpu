@@ -5,9 +5,17 @@ import java.util.Map;
 
 public enum Instruction {
   BRK(0x00),
-  LDA(0xa9),
-  ADC(0x69),
-  STA(0x8d);
+  LDA(0x01),
+  ADC(0x02),
+  STA(0x03),
+  LDX(0x04),
+  INX(0x05),
+  CMY(0x06),
+  BNE(0x07),
+  STA_X(0x08),
+  DEY(0x09),
+  LDY(0x0A),
+  UNKNOWN(0xFF);
 
   private static final Map<Integer, Instruction> lookup = new HashMap<>();
 
@@ -18,7 +26,11 @@ public enum Instruction {
   }
 
   static Instruction from(int number) {
-    return lookup.getOrDefault(number, BRK);
+    if (!lookup.containsKey(number)) {
+      throw new RuntimeException("Unknown instruction " + number);
+    } else {
+      return lookup.get(number);
+    }
   }
 
   private final int number;
