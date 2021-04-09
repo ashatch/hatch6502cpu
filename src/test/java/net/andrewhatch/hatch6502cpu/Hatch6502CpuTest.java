@@ -28,10 +28,10 @@ class Hatch6502CpuTest {
   @Test
   public void lettingTheDogsOut() {
     final int[] program = {
-        4, 128,  // LDX 128 x-register will track where to put our ascii letters
-        1, 0x77, // LDA 0x77 ('w')
-        8,       // STA_X puts 'w' in location 128
-        5,       // increment X to 129
+        4, 128,        // LDX 128 x-register will track where to put our ascii letters
+        1, 0x77,       // LDA 0x77 ('w')
+        8,             // STA_X puts 'w' in location 128
+        5,             // increment X to 129
         1, 0x68, 8, 5, // repeat the routine of loading a letter ('h') into A and placing into next address
         1, 0x6F, 8, 5, // 'o'
         1, 0x20, 8, 5, // ' ' (a space)
