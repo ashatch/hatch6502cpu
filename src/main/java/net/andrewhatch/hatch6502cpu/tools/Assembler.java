@@ -1,4 +1,4 @@
-package net.andrewhatch.hatch6502cpu.compiler;
+package net.andrewhatch.hatch6502cpu.tools;
 
 import net.andrewhatch.hatch6502cpu.vm.Instr;
 import net.andrewhatch.hatch6502cpu.vm.InstructionSet;

@@ -10,7 +10,6 @@ import net.andrewhatch.hatch6502cpu.vm.Ram;
 @QuarkusMain
 public class Cli implements QuarkusApplication {
 
-
   @Override
   public int run(final String... args) {
     final int[] program = {

@@ -1,4 +1,4 @@
-package net.andrewhatch.hatch6502cpu.compiler;
+package net.andrewhatch.hatch6502cpu.tools;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
