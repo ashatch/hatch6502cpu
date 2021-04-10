@@ -48,4 +48,8 @@ public class Dojo6502Decoder implements InstructionDecoder {
   public boolean isStopInstruction(final Instr currentInstruction) {
     return currentInstruction == breakInstruction;
   }
+
+  public InstructionSet getInstructionSet() {
+    return instructionSet;
+  }
 }
