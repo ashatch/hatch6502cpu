@@ -21,10 +21,9 @@ public class Disassembler {
       final Instr instr = this.decoder.decode(program[index])
           .orElseThrow(() -> new RuntimeException("invalid opcode"));
 
-      final String instructionName = instructionName(instr);
-      output.append(instructionName);
-
       final String arguments = instructionArguments(program, index, instr);
+
+      output.append(instructionName(instr));
       if (arguments.length() > 0) {
         output.append(" " + arguments);
       }

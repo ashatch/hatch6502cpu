@@ -5,11 +5,11 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import net.andrewhatch.hatch6502cpu.variants.dojo6502.Dojo6502Decoder;
 import org.junit.jupiter.api.Test;
 
-class CompilerTest {
+class AssemblerTest {
   @Test
   public void smallProgram() {
-    Compiler c = new Compiler(new Dojo6502Decoder().getInstructionSet());
-    final int[] program = c.compile("LDA 100\nADC 7\nSTA 15\nBRK\n");
+    Assembler c = new Assembler(new Dojo6502Decoder().getInstructionSet());
+    final int[] program = c.assemble("LDA 100\nADC 7\nSTA 15\nBRK\n");
 
     assertThat(program).isEqualTo(new int[] {
         0x01, 100,
