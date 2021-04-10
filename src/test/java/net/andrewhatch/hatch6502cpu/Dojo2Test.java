@@ -2,29 +2,12 @@ package net.andrewhatch.hatch6502cpu;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import net.andrewhatch.hatch6502cpu.variants.dojo6502.Dojo6502Decoder;
+import net.andrewhatch.hatch6502cpu.vm.Cpu;
+import net.andrewhatch.hatch6502cpu.vm.Ram;
 import org.junit.jupiter.api.Test;
 
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-
-class Hatch6502CpuTest {
-  @Test
-  public void dojo1Test() {
-    final int[] program = {
-        0x01, 100,  // LDA 100 ; store 100 in register A
-        0x02, 7,    // ADC 7   ; add 7 to register A
-        0x03, 15,   // STA 15  ; store register A at memory address 15
-        0x00        // BRK     ; stop
-    };
-
-    final Hatch6502Cpu cpu = new Hatch6502Cpu();
-    cpu.loadProgram(program);
-    cpu.runProgram();
-
-    int value = cpu.peekMemory(15);
-    assertEquals(107, value);
-  }
-
+class Dojo2Test {
   @Test
   public void lettingTheDogsOut() {
     final int[] program = {
@@ -59,17 +42,19 @@ class Hatch6502CpuTest {
         1, 0x20, 8, 5, // ' '
         9,             // dec y
         6, 0,          // equal flag set if y == 0?
-        7, -20,        // if equal flag not set, rewind 20 instructions
+        7, -21,        // if equal flag not set, rewind 20 instructions
         0              // finish letting the dogs out
     };
 
-    final Hatch6502Cpu cpu = new Hatch6502Cpu();
+
+    final Ram ram = new Ram(256);
+    final Cpu cpu = new Cpu(new Dojo6502Decoder(), ram);
     cpu.loadProgram(program);
     cpu.runProgram();
 
 
     byte[] buf = new byte[128];
-    cpu.copyMemoryBytes(buf, 128, 128);
+    ram.copyMemoryBytes(buf, 128, 128);
     final String output = new String(buf).split("\0")[0]; // deal with null (\0) terminated string
 
     assertEquals("who let the dogs out who who who ", output);

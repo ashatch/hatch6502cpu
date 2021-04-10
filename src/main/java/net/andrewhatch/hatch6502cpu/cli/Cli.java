@@ -1,11 +1,14 @@
-package net.andrewhatch.hatch6502cpu;
+package net.andrewhatch.hatch6502cpu.cli;
 
 import io.quarkus.runtime.Quarkus;
 import io.quarkus.runtime.QuarkusApplication;
 import io.quarkus.runtime.annotations.QuarkusMain;
+import net.andrewhatch.hatch6502cpu.variants.dojo6502.Dojo6502Decoder;
+import net.andrewhatch.hatch6502cpu.vm.Cpu;
+import net.andrewhatch.hatch6502cpu.vm.Ram;
 
 @QuarkusMain
-public class VirtualMachine implements QuarkusApplication {
+public class Cli implements QuarkusApplication {
 
 
   @Override
@@ -17,13 +20,16 @@ public class VirtualMachine implements QuarkusApplication {
         0x00        // BRK     ; stop
     };
 
-    final Hatch6502Cpu hatch6502Cpu = new Hatch6502Cpu();
-    hatch6502Cpu.loadProgram(program);
-    hatch6502Cpu.runProgram();
+
+    final Ram ram = new Ram(256);
+    final Cpu cpu = new Cpu(new Dojo6502Decoder(), ram);
+
+    cpu.loadProgram(program);
+    cpu.runProgram();
     return 0;
   }
 
   public static void main(String... args) {
-    Quarkus.run(VirtualMachine.class, args);
+    Quarkus.run(Cli.class, args);
   }
 }
