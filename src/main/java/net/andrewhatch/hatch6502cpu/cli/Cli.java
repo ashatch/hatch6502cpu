@@ -3,7 +3,7 @@ package net.andrewhatch.hatch6502cpu.cli;
 import io.quarkus.runtime.Quarkus;
 import io.quarkus.runtime.QuarkusApplication;
 import io.quarkus.runtime.annotations.QuarkusMain;
-import net.andrewhatch.hatch6502cpu.variants.dojo6502.Dojo6502Decoder;
+import net.andrewhatch.hatch6502cpu.variants.Dojo6502Decoder;
 import net.andrewhatch.hatch6502cpu.vm.Cpu;
 import net.andrewhatch.hatch6502cpu.vm.Ram;
 

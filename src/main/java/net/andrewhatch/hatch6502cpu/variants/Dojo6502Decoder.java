@@ -1,4 +1,4 @@
-package net.andrewhatch.hatch6502cpu.variants.dojo6502;
+package net.andrewhatch.hatch6502cpu.variants;
 
 import net.andrewhatch.hatch6502cpu.vm.InstructionDecoder;
 import net.andrewhatch.hatch6502cpu.vm.InstructionSet;

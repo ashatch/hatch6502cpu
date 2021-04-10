@@ -2,7 +2,7 @@ package net.andrewhatch.hatch6502cpu.compiler;
 
 import static org.assertj.core.api.Assertions.*;
 
-import net.andrewhatch.hatch6502cpu.variants.dojo6502.Dojo6502Decoder;
+import net.andrewhatch.hatch6502cpu.variants.Dojo6502Decoder;
 import org.junit.jupiter.api.Test;
 
 class DisassemblerTest {

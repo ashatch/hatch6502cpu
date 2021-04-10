@@ -2,7 +2,7 @@ package net.andrewhatch.hatch6502cpu;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import net.andrewhatch.hatch6502cpu.variants.dojo6502.Dojo6502Decoder;
+import net.andrewhatch.hatch6502cpu.variants.Dojo6502Decoder;
 import net.andrewhatch.hatch6502cpu.vm.Cpu;
 import net.andrewhatch.hatch6502cpu.vm.Ram;
 import org.junit.jupiter.api.Test;
