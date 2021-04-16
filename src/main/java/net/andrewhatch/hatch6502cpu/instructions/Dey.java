@@ -13,5 +13,6 @@ public class Dey implements Instr {
   @Override
   public void execute(final Cpu cpu, final Ram ram) {
     cpu.registerY--;
+    cpu.programCounter++;
   }
 }

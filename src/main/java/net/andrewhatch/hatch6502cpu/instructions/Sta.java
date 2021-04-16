@@ -15,5 +15,6 @@ public class Sta implements Instr {
     cpu.programCounter++;
     int address = cpu.memoryAtProgramCounter();
     ram.memory[address] = cpu.registerA;
+    cpu.programCounter++;
   }
 }

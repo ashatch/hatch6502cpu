@@ -42,7 +42,7 @@ class Dojo2Test {
         1, 0x20, 8, 5, // ' '
         9,             // dec y
         6, 0,          // equal flag set if y == 0?
-        7, -21,        // if equal flag not set, rewind 20 instructions
+        7, -20,        // if equal flag not set, rewind 20 instructions
         0              // finish letting the dogs out
     };
 
@@ -51,7 +51,6 @@ class Dojo2Test {
     final Cpu cpu = new Cpu(new Dojo6502Decoder(), ram);
     cpu.loadProgram(program);
     cpu.runProgram();
-
 
     byte[] buf = new byte[128];
     ram.copyMemoryBytes(buf, 128, 128);

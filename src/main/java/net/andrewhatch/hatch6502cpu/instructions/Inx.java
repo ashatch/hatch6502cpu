@@ -13,5 +13,6 @@ public class Inx implements Instr {
   @Override
   public void execute(final Cpu cpu, final Ram ram) {
     cpu.registerX++;
+    cpu.programCounter++;
   }
 }

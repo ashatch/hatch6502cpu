@@ -14,5 +14,6 @@ public class Ldy implements Instr {
   public void execute(final Cpu cpu, final Ram ram) {
     cpu.programCounter++;
     cpu.registerY = cpu.memoryAtProgramCounter();
+    cpu.programCounter++;
   }
 }

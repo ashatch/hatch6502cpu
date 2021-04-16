@@ -15,6 +15,8 @@ public class Bne implements Instr {
     cpu.programCounter++;
     if (!cpu.equalFlag) {
       cpu.programCounter += cpu.memoryAtProgramCounter();
+    } else {
+      cpu.programCounter++;
     }
   }
 }

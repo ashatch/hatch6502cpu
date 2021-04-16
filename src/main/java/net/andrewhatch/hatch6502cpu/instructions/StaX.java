@@ -13,5 +13,6 @@ public class StaX implements Instr {
   @Override
   public void execute(final Cpu cpu, final Ram ram) {
     ram.memory[cpu.registerX] = cpu.registerA;
+    cpu.programCounter++;
   }
 }

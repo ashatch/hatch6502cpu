@@ -6,6 +6,7 @@ public class Cpu {
   private final InstructionDecoder instructionDecoder;
 
   public int programCounter = 0;
+  public int stackPointer = 0;
   public int registerA = 0;
   public int registerX = 0;
   public int registerY = 0;
@@ -17,6 +18,7 @@ public class Cpu {
   ) {
     this.instructionDecoder = decoder;
     this.ram = ram;
+    this.stackPointer = ram.memory.length -1;
   }
 
   public void loadProgram(final int[] program) {
@@ -32,7 +34,6 @@ public class Cpu {
           .orElseThrow(() -> new RuntimeException("unknown instruction " + x));
 
       currentInstruction.execute(this, this.ram);
-      this.programCounter++;
     }
   }
 

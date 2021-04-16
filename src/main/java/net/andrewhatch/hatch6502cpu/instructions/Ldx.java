@@ -14,5 +14,6 @@ public class Ldx implements Instr {
   public void execute(final Cpu cpu, final Ram ram) {
     cpu.programCounter++;
     cpu.registerX = cpu.memoryAtProgramCounter();
+    cpu.programCounter++;
   }
 }

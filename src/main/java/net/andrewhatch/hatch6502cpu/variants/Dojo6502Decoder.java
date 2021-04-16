@@ -1,5 +1,7 @@
 package net.andrewhatch.hatch6502cpu.variants;
 
+import net.andrewhatch.hatch6502cpu.instructions.Jsr;
+import net.andrewhatch.hatch6502cpu.instructions.Rts;
 import net.andrewhatch.hatch6502cpu.vm.InstructionDecoder;
 import net.andrewhatch.hatch6502cpu.vm.InstructionSet;
 import net.andrewhatch.hatch6502cpu.vm.InstructionSetBuilder;
@@ -36,6 +38,8 @@ public class Dojo6502Decoder implements InstructionDecoder {
         .add(0x08, new StaX())
         .add(0x09, new Dey())
         .add(0x0A, new Ldy())
+        .add(0x0B, new Jsr())
+        .add(0x0C, new Rts())
         .build();
   }
 

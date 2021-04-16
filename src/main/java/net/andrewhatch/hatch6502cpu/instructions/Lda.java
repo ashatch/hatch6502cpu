@@ -14,5 +14,6 @@ public class Lda implements Instr {
   public void execute(final Cpu cpu, final Ram ram) {
     cpu.programCounter++;
     cpu.registerA = cpu.memoryAtProgramCounter();
+    cpu.programCounter++;
   }
 }
