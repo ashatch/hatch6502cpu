@@ -2,8 +2,8 @@ package net.andrewhatch.hatch6502cpu;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import net.andrewhatch.hatch6502cpu.variants.Dojo6502Decoder;
 import net.andrewhatch.hatch6502cpu.vm.Cpu;
+import net.andrewhatch.hatch6502cpu.instructionsets.Dojo6502InstructionSet;
 import net.andrewhatch.hatch6502cpu.vm.Ram;
 import org.junit.jupiter.api.Test;
 
@@ -18,7 +18,7 @@ public class Dojo3Test {
     };
 
     final Ram ram = new Ram(256);
-    final Cpu cpu = new Cpu(new Dojo6502Decoder(), ram);
+    final Cpu cpu = new Cpu(Dojo6502InstructionSet.make(), ram);
 
     assertEquals(0x00, ram.peekMemory(255));
     assertEquals(255, cpu.stackPointer);
@@ -48,7 +48,7 @@ public class Dojo3Test {
     };
 
     final Ram ram = new Ram(256);
-    final Cpu cpu = new Cpu(new Dojo6502Decoder(), ram);
+    final Cpu cpu = new Cpu(Dojo6502InstructionSet.make(), ram);
     cpu.loadProgram(program);
     cpu.runProgram();
 

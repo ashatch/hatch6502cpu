@@ -37,7 +37,7 @@ public class Assembler {
   }
 
   private int[] assembleLine(final String line) {
-    final String[] parts = line.split(" ");
+    final String[] parts = line.split(";")[0].split(" ");
 
     int opcode = instructionSet.opCode(parts[0])
         .orElseThrow(() -> new RuntimeException("invalid instruction"));

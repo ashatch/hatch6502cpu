@@ -1,16 +1,16 @@
 package net.andrewhatch.hatch6502cpu.tools;
 
 import net.andrewhatch.hatch6502cpu.vm.Instr;
-import net.andrewhatch.hatch6502cpu.vm.InstructionDecoder;
+import net.andrewhatch.hatch6502cpu.vm.InstructionSet;
 
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Disassembler {
-  private final InstructionDecoder decoder;
+  private final InstructionSet instructionSet;
 
-  public Disassembler(InstructionDecoder decoder) {
-    this.decoder = decoder;
+  public Disassembler(InstructionSet instructionSet) {
+    this.instructionSet = instructionSet;
   }
 
   public String disassemble(int[] program) {
@@ -18,7 +18,7 @@ public class Disassembler {
 
     int index = 0;
     while (index < program.length) {
-      final Instr instr = this.decoder.decode(program[index])
+      final Instr instr = this.instructionSet.instruction(program[index])
           .orElseThrow(() -> new RuntimeException("invalid opcode"));
 
       final String arguments = instructionArguments(program, index, instr);

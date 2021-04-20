@@ -3,8 +3,8 @@ package net.andrewhatch.hatch6502cpu.cli;
 import io.quarkus.runtime.Quarkus;
 import io.quarkus.runtime.QuarkusApplication;
 import io.quarkus.runtime.annotations.QuarkusMain;
-import net.andrewhatch.hatch6502cpu.variants.Dojo6502Decoder;
 import net.andrewhatch.hatch6502cpu.vm.Cpu;
+import net.andrewhatch.hatch6502cpu.instructionsets.Dojo6502InstructionSet;
 import net.andrewhatch.hatch6502cpu.vm.Ram;
 
 @QuarkusMain
@@ -21,7 +21,7 @@ public class Cli implements QuarkusApplication {
 
 
     final Ram ram = new Ram(256);
-    final Cpu cpu = new Cpu(new Dojo6502Decoder(), ram);
+    final Cpu cpu = new Cpu(Dojo6502InstructionSet.make(), ram);
 
     cpu.loadProgram(program);
     cpu.runProgram();

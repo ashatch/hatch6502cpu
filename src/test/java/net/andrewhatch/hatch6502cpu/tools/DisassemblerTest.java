@@ -2,13 +2,13 @@ package net.andrewhatch.hatch6502cpu.tools;
 
 import static org.assertj.core.api.Assertions.*;
 
-import net.andrewhatch.hatch6502cpu.variants.Dojo6502Decoder;
+import net.andrewhatch.hatch6502cpu.instructionsets.Dojo6502InstructionSet;
 import org.junit.jupiter.api.Test;
 
 class DisassemblerTest {
   @Test
   public void singleLineWithOpcodeLengthOne() {
-    final Disassembler disassembler = new Disassembler(new Dojo6502Decoder());
+    final Disassembler disassembler = new Disassembler(Dojo6502InstructionSet.make());
     final String program = disassembler.disassemble(new int[] {
         0x05
     });
@@ -20,7 +20,7 @@ class DisassemblerTest {
 
   @Test
   public void singleLineWithOpcodeLengthTwo() {
-    final Disassembler disassembler = new Disassembler(new Dojo6502Decoder());
+    final Disassembler disassembler = new Disassembler(Dojo6502InstructionSet.make());
     final String program = disassembler.disassemble(new int[] {
         0x01, 100
     });
@@ -32,7 +32,7 @@ class DisassemblerTest {
 
   @Test
   public void smallProgram() {
-    final Disassembler disassembler = new Disassembler(new Dojo6502Decoder());
+    final Disassembler disassembler = new Disassembler(Dojo6502InstructionSet.make());
     final String program = disassembler.disassemble(new int[] {
         0x01, 100,  // LDA 100 ; store 100 in register A
         0x02, 7,    // ADC 7   ; add 7 to register A
@@ -45,7 +45,7 @@ class DisassemblerTest {
 
   @Test
   public void longProgramTest() {
-    final Disassembler disassembler = new Disassembler(new Dojo6502Decoder());
+    final Disassembler disassembler = new Disassembler(Dojo6502InstructionSet.make());
     final String program = disassembler.disassemble(new int[] {
         4, 128,        // LDX 128 x-register will track where to put our ascii letters
         1, 0x77,       // LDA 0x77 ('w')
